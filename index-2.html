@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>모바일 주민등록증</title>
+</head>
+<body style="height: 725px;">
+    <div class="header">
+        <img src="./ㅇㅇ_files/icon.png"> 
+        <h2><p>주민등록증</p><p>모바일</p><p>확인서비스</p></h2>
+        <div class="header_list">
+            <bd>
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+                </svg>
+            </bd>
+        </div>
+    </div>
+    <hr color="#ddeaf3">
+    <div id="wrap" class="">
+        <div id="box" class="box_main" style="display: block;">
+            <img src="./ㅇㅇ_files/IMG-0510.jpg" alt="IMG-0510" border="0">
+            <br><br>
+            <h1>고유찬</h1>
+            <h2 style="margin-left: 27px;">06.09.13</h2>
+            <h3>서울특별시 성북구 길음로 9길 래미안 113동101호</h3>
+            <div class="QR_Code">
+                <img id="QR_img" src="https://i.esdrop.com/d/f/he9mI2XLa1/FmQIWBVQaI.png">
+            </div>
+            <progress value="8" max="30" id="jb"></progress>
+            <p class="progressbar_text">남은시간</p>
+            <p class="progressbar_time">8초</p>
+            <p class="QR_text">QR코드를 리더기에 스캔하세요</p>
+            <div class="box_footer">
+                <p class="js-click-modal">상세정보 표시</p>
+            </div>
+        </div>
+
+        <div class="modal" style="display: none;">
+            <div id="box">
+                <img src="./ㅇㅇ_files/IMG-0510.jpg" alt="IMG-0510" border="0"> 
+                <h1>홍유찬</h1>
+                <h2>060913-3978521</h2>
+                <h3>서울특별시 성북구 길음로 9길 래미안 113동101호</h3>
+                <h4 style="margin-left: 42%">2024.10.02</h4>
+                <h5 style="margin-left: 32%;">서울특별시 성북구청장</h5>
+            </div>
+            <div class="back">
+                <bd><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"></path>
+                </svg></bd>
+            </div>
+        </div>
+
+        <div id="footer">
+            <marquee><p>캡쳐방지 시스템이 작동 중입니다. 캡쳐방지 시스템이 작동 중입니다. 캡쳐방지 시스템이 작동 중입니다.</p></marquee>
+        </div>
+    </div>
+
+<script src="./ㅇㅇ_files/jquery-3.6.0.slim.js"></script>
+<script>
+    window.addEventListener('load', function() {
+        document.body.style.height = (document.documentElement.clientHeight + 5) + 'px';
+        setTimeout(scrollTo, 0, 0, 1);
+    }, false);
+
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelector(".js-click-modal").addEventListener("click", function () {
+            document.querySelector('.box_main').style.display = 'none';
+            document.querySelector('.modal').style.display = 'block';
+        });
+
+        document.querySelector(".back").addEventListener("click", function () {
+            document.querySelector('.box_main').style.display = 'block';
+            document.querySelector('.modal').style.display = 'none';
+        });
+
+        let count = 30;
+        setInterval(() => {
+            document.querySelector('.progressbar_time').innerHTML = `${count}초`;
+            document.querySelector('#jb').value = count;
+            if (count <= 0) {
+                document.querySelector('#QR_img').src = "https://i.esdrop.com/d/f/he9mI2XLa1/FmQIWBVQaI.png";
+                count = 30;
+            }
+            count -= 1;
+        }, 1000);
+    });
+</script>
+</body>
+</html>
